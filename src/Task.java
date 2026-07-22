@@ -1,17 +1,15 @@
 
 public class Task {
 
-    String task ;
+    private String task ;
 
-    Task(String task) {
+    public Task(String task) {
         this.task =task ;
 
     }
 
-    void taskAdded() {
-        System.out.println("****************");
-        System.out.println("You added a task");
-        System.out.println("****************");
+    public String getTask() {
+        return task ;
     }
 
 

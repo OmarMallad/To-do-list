@@ -8,9 +8,10 @@ public class Main {
         ArrayList<String> taskArray = new ArrayList<>();
 
         //Variables :
-        String task ;
+        String task = "";
         int choice ;
         boolean running = true ;
+        int j  ;
 
         //Welcome message :
 
@@ -28,8 +29,15 @@ public class Main {
             System.out.println("4. Exit");
             System.out.println("***************");
             System.out.print("please choose (1-4) :");
+
+            while(!scanner.hasNextInt()) {
+                System.out.println("Error , please enter a whole number");
+                System.out.print("Try again : ");
+                scanner.next() ;
+            }
+
             choice = scanner.nextInt();
-            scanner.nextLine() ;
+            scanner.nextLine();
 
             switch (choice) {
 
@@ -40,9 +48,11 @@ public class Main {
                     }
                     else {
                         int i = 1 ;
+                        Task objectTask1 = new Task(task);
                         for (String A : taskArray) {
-                            System.out.println(i + " " + A);
+                            System.out.println(i + " " + objectTask1.getTask() );
                             i++ ;
+
                         }
                     }
                 break ;
@@ -57,17 +67,27 @@ public class Main {
                 }
                 else {
                     Task objectTask = new Task(task);
-                    objectTask.taskAdded();
+                    System.out.println("You added : " + objectTask.getTask());
                     taskArray.add(task);
                     break;
                 }
                 case 3 :
-                    //remove will be added later
+                    System.out.print("Please enter the number of the task u wanna delete : ");
+                    while(!scanner.hasNextInt() || taskArray.isEmpty() ){
+                        System.out.println("Error , please enter a whole number");
+                        System.out.print("Try again : ");
+                        scanner.next() ;
+                    }
+
+
+                    j = scanner.nextInt() ;
+                    taskArray.remove( j - 1) ;
+                    System.out.println("deleted successfully");
                     break ;
 
                 case 4 :
                     //Exit :
-                    System.out.println("GoodBye !!!");
+                    System.out.println("GoodBye!!!");
                     running = false ;
                     break;
 
